@@ -10,7 +10,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int i = 0, x;
 	char c, *s;
 	va_list p;
 
@@ -25,7 +25,11 @@ int _printf(const char *format, ...)
 				return (-1);
 			else if (*format == '%')
 				_putchar(*format);
-			else if (*format == 'c')
+			else if (*format == 'd' || *format == 'i')
+			{
+				x = va_arg(p, int);
+				_putchar(x + '0');
+			} else if (*format == 'c')
 			{
 				c = va_arg(p, int);
 				_putchar(c);
