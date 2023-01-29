@@ -21,7 +21,9 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{	format++;
-			if (*format == '%')
+			if (*format == 0)
+				return (-1);
+			else if (*format == '%')
 				_putchar(*format);
 			else if (*format == 'c')
 			{
@@ -35,8 +37,7 @@ int _printf(const char *format, ...)
 					i++;
 					_putchar(*s++);
 				} i--;
-			} else if (*format == 0)
-				return (-1);
+			}
 			else
 				_putchar(*--format);
 			format++;
