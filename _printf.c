@@ -10,14 +10,40 @@
 int _printf(const char *format, ...)
 {
 	int i = 0;
+	char c, *s;
 	va_list p;
-
+	
+	if (format == 0)
+		return (-1);
 	va_start(p, format);
 	while (*format != '\0')
 	{
+		i++;
+		while (*format == '%')
+		{	format++;
+			if (*format == '%')
+				_putchar(*format);
+			else if (*format == 'c')
+			{
+				c = va_arg(p, int);
+				_putchar(c);
+			} else if (*format == 's')
+			{
+				s = va_arg(p, char *);
+				while (*s != '\0')
+				{
+					i++;
+					_putchar(*s++);
+				} i--;
+			}
+			else
+				_putchar(*--format);
+			format++;
+			i++;
+			continue;
+		}
 		_putchar(*format);
 		format++;
-		i++;
-	}	
+}
 		return (i);
 }
