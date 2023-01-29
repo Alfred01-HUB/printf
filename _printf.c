@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 			{
 				x = va_arg(p, int);
-				_putchar(x + '0');
+				printf("%d", x);
 			} else if (*format == 'c')
 			{
 				c = va_arg(p, int);
