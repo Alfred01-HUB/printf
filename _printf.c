@@ -37,6 +37,8 @@ int _printf(const char *format, ...)
 				} i--;
 			} else if (*format == 0)
 				return (-1);
+			else
+				_putchar(*--format);
 			format++;
 			i++;
 			continue;
