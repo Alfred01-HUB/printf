@@ -1,4 +1,5 @@
 #include <stdarg.h>
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -34,16 +35,14 @@ int _printf(const char *format, ...)
 					i++;
 					_putchar(*s++);
 				} i--;
-			}
-			else
-				_putchar(*--format);
+			} else if (*format == 0)
+				return (-1);
 			format++;
 			i++;
 			continue;
 		}
-		_putchar(*format);
+		_putchar(*format++);
 		i++;
-		format++;
 }
 		return (i);
 }
