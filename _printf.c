@@ -45,5 +45,5 @@ int _printf(const char *format, ...)
 		i++;
 		format++;
 }
-		return (--i);
+		return (i);
 }
