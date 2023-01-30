@@ -1,4 +1,6 @@
 #include <stdarg.h>
+#include <limits.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
 
@@ -28,7 +30,15 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 			{
 				x = va_arg(p, int);
-				printf("%d", x);
+				s = (char *) malloc(INT_MAX);
+				if (s == NULL)
+					return (0);
+				sprintf(s, "%d", x);
+				while (*s != '\0')
+				{
+					i++;
+					_putchar(*s++);
+				} i--;
 			} else if (*format == 'c')
 			{
 				c = va_arg(p, int);
